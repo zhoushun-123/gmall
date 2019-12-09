@@ -1,13 +1,13 @@
 package com.atguigu.gmall.bean;
 
 import lombok.Data;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Data
 public class BaseAttrInfo implements Serializable {
+
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,4 +19,6 @@ public class BaseAttrInfo implements Serializable {
 
     @Transient
     private List<BaseAttrValue> attrValueList;
+
+
 }

@@ -18,4 +18,16 @@ public interface ManageService {
     void saveAttrInfo(BaseAttrInfo baseAttrInfo);
     //http://localhost:8082/getAttrValueList?attrId=100
     List<BaseAttrValue> getAttrValueList(String attrId);
+
+    List<SpuInfo> getSpuInfoList(SpuInfo spuInfo);
+    //http://localhost:8082/baseSaleAttrList
+    List<BaseSaleAttr> baseSaleAttrList();
+    //http://localhost:8082/saveSpuInfo
+    void saveSpuInfo (SpuInfo spuInfo);
+    //http://localhost:8082/spuSaleAttrList?spuId=59
+    List<SpuSaleAttr> spuSaleAttrList(String spuId);
+    //http://localhost:8082/spuImageList?spuId=59
+    List<SpuImage> spuImageList(String spuId);
+    //http://localhost:8082/saveSkuInfo
+    void saveSkuInfo(SkuInfo skuInfo);
 }

@@ -50,4 +50,17 @@ public class ManageController {
     public List<BaseAttrValue> getAttrValueList(String attrId){
         return manageService.getAttrValueList(attrId);
     }
+    //http://localhost:8082/baseSaleAttrList
+    @RequestMapping("baseSaleAttrList")
+    @ResponseBody
+    public List<BaseSaleAttr> baseSaleAttrList(){
+        return manageService.baseSaleAttrList();
+    }
+
+    @RequestMapping("saveSpuInfo")
+    @ResponseBody
+    public String saveSpuInfo(@RequestBody SpuInfo spuInfo){
+        manageService.saveSpuInfo(spuInfo);
+        return  "OK";
+    }
 }
