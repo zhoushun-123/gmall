@@ -56,7 +56,7 @@ public class ManageController {
     public List<BaseSaleAttr> baseSaleAttrList(){
         return manageService.baseSaleAttrList();
     }
-
+    //http://localhost:8082/saveSpuInfo
     @RequestMapping("saveSpuInfo")
     @ResponseBody
     public String saveSpuInfo(@RequestBody SpuInfo spuInfo){

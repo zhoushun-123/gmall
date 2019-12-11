@@ -7,7 +7,9 @@ import com.atguigu.gmall.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ManageServiceImpl implements ManageService{
@@ -191,6 +193,32 @@ public class ManageServiceImpl implements ManageService{
                 skuSaleAttrValueMapper.insertSelective(saleAttrValue);
             }
         }
+    }
+
+    @Override
+    public SkuInfo getSkuInfo(String skuId) {
+
+        SkuInfo skuInfo = skuInfoMapper.selectByPrimaryKey(skuId);
+        SkuImage skuImage = new SkuImage();
+        skuImage.setSkuId(skuId);
+        List<SkuImage> skuImageList = skuImageMapper.select(skuImage);
+        skuInfo.setSkuImageList(skuImageList);
+        return skuInfo;
+    }
+
+    @Override
+    public List<SpuSaleAttr> getSpuSaleAttrListCheckBySku(SkuInfo skuInfo) {
+        return spuSaleAttrMapper.selectSpuSaleAttrListCheckBySku(skuInfo.getId(),skuInfo.getSpuId());
+    }
+
+    @Override
+    public Map<Object, Object> getSkuValueIdsMap(String spuId) {
+        List<Map> mapList=skuSaleAttrValueMapper.getSaleAttrValuesBySpu(spuId);
+        HashMap<Object, Object> hashMap = new HashMap<>();
+        for (Map map:mapList){
+            hashMap.put(map.get("value_ids"),map.get("sku_id"));
+        }
+        return hashMap;
     }
 
 

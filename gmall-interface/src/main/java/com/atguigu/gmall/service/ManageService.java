@@ -4,6 +4,7 @@ package com.atguigu.gmall.service;
 import com.atguigu.gmall.bean.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ManageService {
     //http://localhost:8082/getCatalog1
@@ -30,4 +31,10 @@ public interface ManageService {
     List<SpuImage> spuImageList(String spuId);
     //http://localhost:8082/saveSkuInfo
     void saveSkuInfo(SkuInfo skuInfo);
+
+    SkuInfo getSkuInfo(String skuId);
+
+    List<SpuSaleAttr> getSpuSaleAttrListCheckBySku(SkuInfo skuInfo);
+
+    Map<Object, Object> getSkuValueIdsMap(String spuId);
 }
